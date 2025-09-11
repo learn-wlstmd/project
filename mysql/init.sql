@@ -10,5 +10,3 @@ CREATE TABLE IF NOT EXISTS user (
     PRIMARY KEY (id),
     KEY idx_email (email)
 );
-
-ALTER TABLE user ADD INDEX IF NOT EXISTS idx_email (email);
