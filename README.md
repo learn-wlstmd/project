@@ -18,6 +18,6 @@ mv stress/stress project/stress
 - 아래의 명령어를 이용해 어플리케이션 실행
 ```sh
 cd project
-docker-compose up --build
+docker compose up --build
 ```
 - 아래의 명령어를 이용해서 어플리케이션 분석
