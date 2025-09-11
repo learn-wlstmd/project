@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: dev
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  user:
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    container_name: user
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DBNAME: dev
+    ports:
+      - "8081:8080"
+
+  product:
+    build:
+      context: ./product
+      dockerfile: Dockerfile
+    container_name: product
+    environment:
+      TABLE_NAME: product_table
+      TABLE_INDEX_NAME: product_index
+    ports:
+      - "8082:8080"
+
+  stress:
+    build:
+      context: ./stress
+      dockerfile: Dockerfile
+    container_name: stress
+    ports:
+      - "8083:8080"
+
