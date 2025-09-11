@@ -42,8 +42,8 @@ services:
       dockerfile: Dockerfile
     container_name: product
     environment:
-      TABLE_NAME: product_table
-      TABLE_INDEX_NAME: product_index
+      TABLE_NAME: product
+      # TABLE_INDEX_NAME: product_index
     ports:
       - "8082:8080"
 
