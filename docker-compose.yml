@@ -44,6 +44,7 @@ services:
     environment:
       TABLE_NAME: product
       # TABLE_INDEX_NAME: product_index
+      AWS_REGION: ap-northeast-2
     ports:
       - "8082:8080"
 
