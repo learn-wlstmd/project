@@ -21,6 +21,11 @@ mv stress/stress project/stress
 ```
 - 아래의 명령어를 이용해 어플리케이션 실행
 ```sh
+export AWS_REGION=ap-northeast-2
+export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
+export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
+```
+```sh
 cd project
 docker compose up -d
 ```
