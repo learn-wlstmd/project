@@ -15,9 +15,9 @@ chmod +x setup.sh
 ```
 - 아래의 명령어를 이용해 `user`, `porudct`, `stress` 폴더의 제공받은 바이너리 파일을 경로 이동
 ```sh
-mv product/product project/product
-mv user/user project/user
-mv stress/stress project/stress
+cp product/product project/product
+cp user/user project/user
+cp stress/stress project/stress
 ```
 - 아래의 명령어를 이용해 어플리케이션 실행
 ```sh
